@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="user-scalable=no, initial-scale=1.0, maximum-scale=1.0, width=device-width, viewport-fit=cover">
+    <meta name="theme-color" content="#f0ebe2">
+    <meta name="title" content="쑤's Christmas Party">
+    <meta name="description" content="크리스마스 파티에 초대합니다">
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="쑤's Christmas Party">
+    <meta property="og:description" content="크리스마스 파티에 초대합니다">
+    <meta property="og:url" content="https://w012792.github.io/sue-christmas/">
+    <meta property="og:image" content="./images/img_thumb.jpg">
+    <link rel="stylesheet" href="./css/ui.css" />
+    <script src="./js/jquery-3.7.1.min.js"></script>
+    <title>쑤's Christmas Party</title>
+    
+    <script>
+
+//dialog
+function openDialog(el) {
+    var $el = $('#' + el);
+    $('.dialog').removeClass('open');
+    $el.addClass('open');
+    $el.find('.dialog_close').off().on('click', function() {
+        $el.removeClass('open');
+    });
+
+    $(document).mouseup(function(e){    //dialog 여백 클릭 시 close
+        if($(e.target).parents('.dialog_inner').length < 1 && $(e.target).closest('.header').length < 1 && $(e.target).closest('.popup, .popFull').length < 1) {    //popup 클릭 시 dialog 닫히지 않도록
+            $('.dialog.open').removeClass('open');
+        }
+    });
+}
+
+    //팝업
+    function openPopup(el) {
+        var $el = $('#' + el);
+        $el.show();
+        $el.find('.popup_close, .popup_prev').on('click', function() {
+            $el.hide();
+            return false;
+        });
+    }
+    function closePopup(el) {
+        $(el).parents('.popup, .popFull').hide();
+    }
+
+    //토스트팝업
+    function snack(tsMsg) {
+        const msg = tsMsg ? tsMsg : "메시지를 입력해주세요", 
+            html = '<div class="snack"><p class="snack_text">'+msg+'</p><span class="snack_close"><span class="blind">닫기</span></span></div>';
+        $('body').append(html);
+        const $snack = $('body .snack').last();
+        setTimeout(function(){
+            $snack.remove();
+        }, 3000);
+        $('.snack_close').on('click', function() {
+            $(this).parents('.snack').remove();
+            return false;
+        });
+    }
+
+    function rotateMsg(el) {
+        $(el).parents('.wrap').toggleClass('isRotate');
+    }
+    </script>
+</head>
+<body>
+    <div class="wrap">
+        <div class="bg"><img src="./images/tree_1.jpg" alt="Christmas Tree" /></div>
+        <div class="card">
+            <div class="tree">
+                <img src="./images/tree_1.jpg" alt="Christmas Tree" />
+                <div class="ornament">
+                    <button type="button" class="ornament_btn ornament_btn_1" onclick="openPopup('popSample')"><img src="./images/ornament/ornament_1.png" /></button>
+                    <button type="button" class="ornament_btn ornament_btn_2" onclick="openDialog('dialogSample')"><img src="./images/ornament/ornament_2.png" /></button>
+                    <button type="button" class="ornament_btn ornament_btn_3" onclick="openPopup('popFullSample')"><img src="./images/ornament/ornament_4.png" /></button>
+                </div>
+                <button type="button" class="card_btn" onclick="rotateMsg(this)">메시지 보기</button>
+            </div>
+            <div class="msg">
+                <button type="button" class="msg_rotate" onclick="rotateMsg(this)"><span class="blind">앞면으로 돌리기</span></button>
+            </div>
+        </div>
+    </div>
+
+    <!-- dialog::공유하기 -->
+    <div id="dialogSample" class="dialog dialogSample">
+        <div class="dialog_inner">
+            <div class="dialog_header">
+                <button type="button" class="dialog_close"><span class="blind">팝업 닫기</span></button>
+                <strong class="dialog_title">다이어로그 샘플</strong>
+            </div>
+            <div class="dialog_body">
+                <div class="dialogSample_sns">
+                    <!-- <button type="button" class="dialogSample_sns_item dialogSample_sns_item-kakao">카카오톡</button> -->
+                    <button type="button" class="dialogSample_sns_item dialogSample_sns_item-copy" onclick="snack('링크가 복사되었습니다.');">URL 복사</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- popup::알림 받기 -->
+    <div id="popSample" class="popup popSample">
+        <div class="popup_inner">
+            <button type="button" class="popup_close"><span class="blind">팝업 닫기</span></button>
+            <div class="popup_body">
+                <p class="popup_subtitle">팝업 샘플</p>
+                <p class="popup_desc fs12">이런식으로 띄울 수 있음</p>
+            </div>
+            <!-- <div class="popup_footer">
+                <button type="button" class="popup_footer_btn popup_close">취소</button>
+                <button type="button" class="popup_footer_btn">확인</button>
+            </div> -->
+        </div>
+    </div>
+    <!-- //popup::알림 받기 -->
+
+
+    <!-- popup::알림 수신 동의 약관 -->
+    <div id="popFullSample" class="popFull popFullSample">
+        <div class="popFull_inner">
+            <div class="popFull_header">
+                <strong class="popFull_title">풀 팝업</strong>
+                <button type="button" class="popup_close"><span class="blind">팝업 닫기</span></button>
+            </div>
+            <div class="popFull_body">
+                <em class="clause_title">지도 넣어도 될듯</em>
+                
+            </div>
+            <div class="popFull_footer">
+                <button type="button" class="popFull_footer_btn popup_close">확인</button>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
