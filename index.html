@@ -73,7 +73,7 @@ function openDialog(el) {
             <div class="ornament">
                 <button type="button" class="ornament_btn ornament_btn_1" onclick="openPopup('popSample')"><img src="./images/ornament/ornament_1.png" /></button>
                 <button type="button" class="ornament_btn ornament_btn_2" onclick="openDialog('dialogSample')"><img src="./images/ornament/ornament_2.png" /></button>
-                <button type="button" class="ornament_btn ornament_btn_3" onclick="openPopup('popFullSample')"><img src="./images/ornament/ornament_4.png" /></button>
+                <button type="button" class="ornament_btn ornament_btn_3" onclick="openPopup('popFullMap')"><img src="./images/ornament/ornament_4.png" /></button>
             </div>
         </div>
         <div class="text">
@@ -116,15 +116,17 @@ function openDialog(el) {
 
 
     <!-- popup::알림 수신 동의 약관 -->
-    <div id="popFullSample" class="popFull popFullSample">
+    <div id="popFullMap" class="popFull popFullMap">
         <div class="popFull_inner">
             <div class="popFull_header">
-                <strong class="popFull_title">풀 팝업</strong>
+                <strong class="popFull_title">오시는 길</strong>
                 <button type="button" class="popup_close"><span class="blind">팝업 닫기</span></button>
             </div>
             <div class="popFull_body">
-                <em class="clause_title">지도 넣어도 될듯</em>
-                
+                <div class="map">
+                    <img src="./images/img_map.jpg" alt="산본역에서 집 가는 길" />
+                    <div class="map_destination"></div>
+                </div>
             </div>
             <div class="popFull_footer">
                 <button type="button" class="popFull_footer_btn popup_close">확인</button>
