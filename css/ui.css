@@ -21,6 +21,8 @@ figure, figcaption {position:relative;margin:0;padding:0}
 
 /* 숨김 텍스트 */
 .blind {display:block;position:absolute;overflow:hidden;clip:rect(0 0 0 0);width:1px;height:1px}
+.underline {text-decoration:underline;text-underline-position:under}
+.playwrite {font-family:"Playwrite NO",cursive;font-optical-sizing:auto;font-weight:500;font-style:normal}
 
 /*
  ** dialog
@@ -115,3 +117,5 @@ figure, figcaption {position:relative;margin:0;padding:0}
     0%,100% {transform:scale(1)}
     50% {transform:scale(1.15)}
 }
+
+.text {position:absolute;bottom:10%;left:0;right:0;text-align:center}
