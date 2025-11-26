@@ -69,8 +69,8 @@
     $(document).ready(function() {
         setTimeout(function(){
             $('img[src*="//t1.daumcdn.net/localimg/localimages/07/2018/pc/map/marker_map02.png"]').attr('src','./images/ico_marker_90.png');
+            $('.popFullMap').css({'display':'none','opacity':'1','visibility':'visible'})
         }, 100);
-        
     })
     </script>
 </head>
@@ -124,7 +124,7 @@
 
 
     <!-- popup::알림 수신 동의 약관 -->
-    <div id="popFullMap" class="popFull popFullMap">
+    <div id="popFullMap" class="popFull popFullMap" style="display:block;opacity:0;visibility:hidden">
         <div class="popFull_inner">
             <div class="popFull_header">
                 <strong class="popFull_title">오시는 길</strong>
@@ -141,6 +141,9 @@
                             "mapWidth" : "375",
                             "mapHeight" : "300"
                         }).render();
+                        setTimeout(function () {
+                            $(window).trigger('resize');    // 카카오맵이 이걸 보고 다시 그림
+                        }, 0);
                     </script>
                 </div>
                 <div class="map_info">
