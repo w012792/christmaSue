@@ -1,0 +1,22 @@
+
+/* 
+* Paperlogy
+*/
+@font-face {
+    font-family: 'Paperlogy';
+    font-weight: 400;
+    font-display: swap;
+    src: local('Paperlogy Regular'), url('../fonts/Paperlogy-Regular.ttf') format('truetype');
+}
+@font-face {
+    font-family: 'Paperlogy';
+    font-weight: 500;
+    font-display: swap;
+    src: local('Paperlogy Medium'), url('../fonts/Paperlogy-Medium.ttf') format('truetype');
+}
+@font-face {
+    font-family: 'Paperlogy';
+    font-weight: 600;
+    font-display: swap;
+    src: local('Paperlogy Semibold'), url('../fonts/Paperlogy-Semibold.ttf') format('truetype');
+}
