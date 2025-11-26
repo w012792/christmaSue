@@ -17,25 +17,26 @@
     <link rel="stylesheet" href="./css/fonts.css" />
     <link rel="stylesheet" href="./css/ui.css" />
     <script src="./js/jquery-3.7.1.min.js"></script>
+    <script charset="UTF-8" class="daum_roughmap_loader_script" src="https://ssl.daumcdn.net/dmaps/map_js_init/roughmapLoader.js"></script><!-- 카카오맵 -->
     <title>쑤's Christmas Party</title>
     
     <script>
 
-//dialog
-function openDialog(el) {
-    var $el = $('#' + el);
-    $('.dialog').removeClass('open');
-    $el.addClass('open');
-    $el.find('.dialog_close').off().on('click', function() {
-        $el.removeClass('open');
-    });
+    //dialog
+    function openDialog(el) {
+        var $el = $('#' + el);
+        $('.dialog').removeClass('open');
+        $el.addClass('open');
+        $el.find('.dialog_close').off().on('click', function() {
+            $el.removeClass('open');
+        });
 
-    $(document).mouseup(function(e){    //dialog 여백 클릭 시 close
-        if($(e.target).parents('.dialog_inner').length < 1 && $(e.target).closest('.header').length < 1 && $(e.target).closest('.popup, .popFull').length < 1) {    //popup 클릭 시 dialog 닫히지 않도록
-            $('.dialog.open').removeClass('open');
-        }
-    });
-}
+        $(document).mouseup(function(e){    //dialog 여백 클릭 시 close
+            if($(e.target).parents('.dialog_inner').length < 1 && $(e.target).closest('.header').length < 1 && $(e.target).closest('.popup, .popFull').length < 1) {    //popup 클릭 시 dialog 닫히지 않도록
+                $('.dialog.open').removeClass('open');
+            }
+        });
+    }
 
     //팝업
     function openPopup(el) {
@@ -64,6 +65,13 @@ function openDialog(el) {
             return false;
         });
     }
+    
+    $(document).ready(function() {
+        setTimeout(function(){
+            $('img[src*="//t1.daumcdn.net/localimg/localimages/07/2018/pc/map/marker_map02.png"]').attr('src','./images/ico_marker_90.png');
+        }, 100);
+        
+    })
     </script>
 </head>
 <body>
@@ -91,8 +99,8 @@ function openDialog(el) {
             </div>
             <div class="dialog_body">
                 <div class="dialogSample_sns">
-                    <!-- <button type="button" class="dialogSample_sns_item dialogSample_sns_item-kakao">카카오톡</button> -->
-                    <button type="button" class="dialogSample_sns_item dialogSample_sns_item-copy" onclick="snack('링크가 복사되었습니다.');">URL 복사</button>
+                    <a href="tel:" class="dialogSample_sns_item dialogSample_sns_item-copy">쑤에게 전화걸기</a>
+                    <button type="button" class="dialogSample_sns_item dialogSample_sns_item-copy" onclick="snack('링크가 복사되었습니다.');">주소 복사</button>
                 </div>
             </div>
         </div>
@@ -103,8 +111,8 @@ function openDialog(el) {
         <div class="popup_inner">
             <button type="button" class="popup_close"><span class="blind">팝업 닫기</span></button>
             <div class="popup_body">
-                <p class="popup_subtitle">팝업 샘플</p>
-                <p class="popup_desc fs12">이런식으로 띄울 수 있음</p>
+                <p class="popup_subtitle">메뉴</p>
+                <p class="popup_desc fs12"></p>
             </div>
             <!-- <div class="popup_footer">
                 <button type="button" class="popup_footer_btn popup_close">취소</button>
@@ -116,7 +124,7 @@ function openDialog(el) {
 
 
     <!-- popup::알림 수신 동의 약관 -->
-    <div id="popFullMap" class="popFull popFullMap">
+    <div id="popFullMap" class="popFull popFullMap" style="display:block">
         <div class="popFull_inner">
             <div class="popFull_header">
                 <strong class="popFull_title">오시는 길</strong>
@@ -124,13 +132,47 @@ function openDialog(el) {
             </div>
             <div class="popFull_body">
                 <div class="map">
-                    <img src="./images/img_map.jpg" alt="산본역에서 집 가는 길" />
-                    <div class="map_destination"></div>
+                    <div id="daumRoughmapContainer1764142030334" class="root_daum_roughmap root_daum_roughmap_landing"></div>
+                    <!-- 카카오맵 -->
+                    <script charset="UTF-8">
+                    new daum.roughmap.Lander({
+                        "timestamp" : "1764142030334",
+                        "key" : "d8t46ph8r6w",
+                        "mapWidth" : "100%",
+                        "mapHeight" : "300"
+                    }).render();
+                    
+                </script>
+                </div>
+                <div class="map_info">
+                    <dl>
+                        <dt>주소</dt>
+                        <dd>경기도 군포시 광정로 25-20 퇴계주공 3단지아파트 352동</dd>
+                        <dt>대중교통 이용안내</dt>
+                        <dd><em>지하철 이용 시</em></dd>
+                        <dd>- 산본역 4번출구 </dd>
+                        <dd style="margin-top:10px"><em>버스 이용 시</em></dd>
+                        <dd>[산본역 하차(3번 출구)]</dd>
+                        <dd class="bus">
+                            <div><span class="type1">일반</span> 11-2, 15-2, 30, 31, 87, 88 <br /></div>
+                            <div><span class="type2">마을</span> 1, 2, 3, 3-1, 5, 6-1, 9, 10 <br /></div>
+                            <div><span class="type3">직행</span> 3030, 3500, 6501, 8450</div>
+                        </dd>
+                        <dd>[주공2.3단지 아파트입구 하차]</dd>
+                        <dd class="bus">
+                            <div><span class="type1">일반</span> 11-2, 15-2, 30, 87, 88 <br /></div>
+                            <div><span class="type3">직행</span> 3500</div>
+                        </dd>
+                        <dd>[퇴계1차아파트 하차]</dd>
+                        <dd class="bus">
+                            <div><span class="type2">마을</span> 3</div>
+                        </dd>
+                    </dl>
                 </div>
             </div>
-            <div class="popFull_footer">
+            <!-- <div class="popFull_footer">
                 <button type="button" class="popFull_footer_btn popup_close">확인</button>
-            </div>
+            </div> -->
         </div>
     </div>
 </body>
