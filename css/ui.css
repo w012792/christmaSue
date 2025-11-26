@@ -105,6 +105,7 @@ figure, figcaption {position:relative;margin:0;padding:0}
 .ornament_btn_1 {top:60vw;width:6.3vw;margin-left:6vw}
 .ornament_btn_2 {top:87.2vw;width:4vw;margin-left:-13vw;animation-name:onm2;animation-delay:.5s}
 .ornament_btn_3 {top:112.3vw;width:12.1vw;margin-left:4.4vw;animation-name:onm3;animation-delay:.3s}
+.ornament_btn_4 {top:111vw;width:12.1vw;height:12.1vw;margin-left:-27vw;animation:none}
 @keyframes onm1 {
     0%,100% {transform:scale(1)}
     50% {transform:scale(1.2)}
@@ -139,3 +140,9 @@ figure, figcaption {position:relative;margin:0;padding:0}
 .root_daum_roughmap {width:100%!important;border-bottom:1px solid rgba(0,0,0,0.1)}
 .root_daum_roughmap .cont {display:none}
 .wrap_controllers {display:none}
+
+.bomb {opacity:0;visibility:hidden;display:flex;align-items:center;justify-content:center;position:fixed;top:0;left:0;width:100%;height:100%;background-color:rgba(0,0,0,0.4);z-index:-1}
+.bomb_inner {width:70%;transform:scale(.5);transition:transform .14s}
+.bomb_inner img {width:100%}
+.bomb.open {opacity:1;visibility:visible;z-index:1}
+.bomb.open .bomb_inner {transform:scale(1)}
