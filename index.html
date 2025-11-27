@@ -97,7 +97,7 @@
             setTimeout(function(){
                 $('img[src*="//t1.daumcdn.net/localimg/localimages/07/2018/pc/map/marker_map02.png"]').attr('src','./images/ico_marker_90.png');
                 $('.popFullMap').css({'display':'none','opacity':'1','visibility':'visible'})
-            }, 100);
+            }, 150);
 
             // 눈
             var totalSnowflakes = 60; // 눈송이 개수
@@ -117,13 +117,17 @@
 </head>
 <body>
     <div class="wrap">
+        <div class="write">
+            <img src="./images/img_text.png" alt="Merry Christmas">
+        </div>
         <div class="tree">
-            <img src="./images/tree_1.jpg" alt="Christmas Tree" />
+            <img src="./images/tree.jpg" alt="Christmas Tree" />
             <div class="ornament">
                 <button type="button" class="ornament_btn ornament_btn_1" onclick="openPopup('popInfo')"><img src="./images/ornament/ornament_1.png" /></button>
                 <button type="button" class="ornament_btn ornament_btn_2" onclick="openDialog('dialogSample')"><img src="./images/ornament/ornament_2.png" /></button>
-                <button type="button" class="ornament_btn ornament_btn_3" onclick="openPopup('popFullMap')"><img src="./images/ornament/ornament_4.png" /></button>
-                <button type="button" class="ornament_btn ornament_btn_4" onclick="openBomb()"></button>
+                <button type="button" class="ornament_btn ornament_btn_3" onclick="openPopup('popFullMap')"><img src="./images/ornament/ornament_3.png" /></button>
+                <button type="button" class="ornament_btn ornament_btn_4" onclick="openPopup('popMenu')"><img src="./images/ornament/ornament_4.png" /></button>
+                <button type="button" class="ornament_btn ornament_btn_99" onclick="openBomb()"></button>
             </div>
         </div>
         <div class="text">
@@ -190,12 +194,12 @@
             <button type="button" class="popup_close"><span class="blind">팝업 닫기</span></button>
             <div class="popup_body">
                 <p class="popup_subtitle">메뉴</p>
-                <p class="popup_desc fs12"></p>
+                <p class="popup_desc fs12">슬라이드 넣을까 생각 중</p>
                 <div class="menu sueSwiper" data-params='{ "slidesPerView":"auto", "spaceBetween":24, "pagination":{"el":".menu .pagination"}, "observer":"true", "observeParents":"true" }'>
                     <div class="swiper-wrapper">
-                        <div class="swiper-slide">1</div>
-                        <div class="swiper-slide">2</div>
-                        <div class="swiper-slide">3</div>
+                        <div class="swiper-slide menu_img">1</div>
+                        <div class="swiper-slide menu_img">2</div>
+                        <div class="swiper-slide menu_img">3</div>
                     </div>
                     <span class="pagination"></span>
                 </div>
@@ -230,7 +234,7 @@
                 <div class="map_info">
                     <dl>
                         <dt>주소</dt>
-                        <dd>경기도 군포시 광정로 25-20 퇴계주공 3단지아파트 352동 502호</dd>
+                        <dd class="line-height:1.5">경기도 군포시 광정로 25-20 퇴계주공 3단지아파트 <br />352동 502호</dd>
                         <dt>대중교통 이용안내</dt>
                         <dd><em>지하철 이용 시</em></dd>
                         <dd><span class="line4">4</span>산본역 4번출구 </dd>
