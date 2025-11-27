@@ -5,10 +5,10 @@
     <meta name="viewport" content="user-scalable=no, initial-scale=1.0, maximum-scale=1.0, width=device-width, viewport-fit=cover">
     <meta name="theme-color" content="#f0ebe2">
     <meta name="title" content="쑤's Christmas Party">
-    <meta name="description" content="크리스마스 파티에 초대합니다">
+    <meta name="description" content="크리스마스 파티에 초대합니다:)">
     <meta property="og:type" content="website">
     <meta property="og:title" content="쑤's Christmas Party">
-    <meta property="og:description" content="크리스마스 파티에 초대합니다">
+    <meta property="og:description" content="크리스마스 파티에 초대합니다:)">
     <meta property="og:url" content="https://w012792.github.io/sue-christmas/">
     <meta property="og:image" content="./images/img_thumb.jpg">
     <link rel="preconnect" href="https://fonts.googleapis.com"><!-- click font -->
@@ -23,71 +23,96 @@
     <title>쑤's Christmas Party</title>
     
     <script>
+        //swiper
+        function sueSwiper() {
+            var $imdakswiper = $('.sueSwiper');
+            if ( $imdakswiper.length ) {
+                $.each( $imdakswiper ,function ($index, $item) {
+                    var $this = $(this);
+                    if ( !$this.attr('id') ) {
+                    $this.attr('id','swiper-' + $index );
+                    }
+                    var params = $this.data('params');
+                    if(!params) params = {};
+                    var imdakswiper = new Swiper('#'+ $this.attr('id') ,$.extend( {
+                    
+                    } ,params ));
+                } );
+            };
+        }
+        //dialog
+        function openDialog(el) {
+            var $el = $('#' + el);
+            $('.dialog').removeClass('open');
+            $el.addClass('open');
+            $el.find('.dialog_close').off().on('click', function() {
+                $el.removeClass('open');
+            });
 
-    //dialog
-    function openDialog(el) {
-        var $el = $('#' + el);
-        $('.dialog').removeClass('open');
-        $el.addClass('open');
-        $el.find('.dialog_close').off().on('click', function() {
-            $el.removeClass('open');
-        });
+            $(document).mouseup(function(e){    //dialog 여백 클릭 시 close
+                if($(e.target).parents('.dialog_inner').length < 1 && $(e.target).closest('.header').length < 1 && $(e.target).closest('.popup, .popFull').length < 1) {    //popup 클릭 시 dialog 닫히지 않도록
+                    $('.dialog.open').removeClass('open');
+                }
+            });
+        }
 
-        $(document).mouseup(function(e){    //dialog 여백 클릭 시 close
-            if($(e.target).parents('.dialog_inner').length < 1 && $(e.target).closest('.header').length < 1 && $(e.target).closest('.popup, .popFull').length < 1) {    //popup 클릭 시 dialog 닫히지 않도록
-                $('.dialog.open').removeClass('open');
+        //팝업
+        function openPopup(el) {
+            var $el = $('#' + el);
+            $el.show();
+            $el.find('.popup_close, .popup_prev').on('click', function() {
+                $el.hide();
+                return false;
+            });
+        }
+        function closePopup(el) {
+            $(el).parents('.popup, .popFull').hide();
+        }
+
+        //토스트팝업
+        function snack(tsMsg) {
+            const msg = tsMsg ? tsMsg : "메시지를 입력해주세요", 
+                html = '<div class="snack"><p class="snack_text">'+msg+'</p><span class="snack_close"><span class="blind">닫기</span></span></div>';
+            $('body').append(html);
+            const $snack = $('body .snack').last();
+            setTimeout(function(){
+                $snack.remove();
+            }, 3000);
+            $('.snack_close').on('click', function() {
+                $(this).parents('.snack').remove();
+                return false;
+            });
+        }
+
+        function openBomb() {
+            $('.bomb').addClass('open');
+            $(document).mouseup(function(e){    //bomb 여백 클릭 시 close
+                if($(e.target).parents('.bomb_inner').length < 1) {
+                    $('.bomb.open').removeClass('open');
+                }
+            });
+        }
+        
+        $(document).ready(function() {
+            setTimeout(function(){
+                $('img[src*="//t1.daumcdn.net/localimg/localimages/07/2018/pc/map/marker_map02.png"]').attr('src','./images/ico_marker_90.png');
+                $('.popFullMap').css({'display':'none','opacity':'1','visibility':'visible'})
+            }, 100);
+
+            // 눈
+            var totalSnowflakes = 60; // 눈송이 개수
+            var body = $('.wrap');
+            // 눈송이 생성
+            for (let i = 0; i < totalSnowflakes; i++) {
+                var leftPos = Math.random() * $(window).width() + 'px';  // 랜덤 위치
+                var animDuration = (Math.random() * 10 + 4) + 's';
+                var animDelay = Math.random() * 30 + 's'; // 0~5초 지연
+
+                $('<span class="snow"></span>').css({left: leftPos,animationDuration: animDuration,animationDelay: animDelay}).appendTo(body);
             }
-        });
-    }
-
-    //팝업
-    function openPopup(el) {
-        var $el = $('#' + el);
-        $el.show();
-        $el.find('.popup_close, .popup_prev').on('click', function() {
-            $el.hide();
-            return false;
-        });
-    }
-    function closePopup(el) {
-        $(el).parents('.popup, .popFull').hide();
-    }
-
-    //토스트팝업
-    function snack(tsMsg) {
-        const msg = tsMsg ? tsMsg : "메시지를 입력해주세요", 
-            html = '<div class="snack"><p class="snack_text">'+msg+'</p><span class="snack_close"><span class="blind">닫기</span></span></div>';
-        $('body').append(html);
-        const $snack = $('body .snack').last();
-        setTimeout(function(){
-            $snack.remove();
-        }, 3000);
-        $('.snack_close').on('click', function() {
-            $(this).parents('.snack').remove();
-            return false;
-        });
-    }
-
-    function copyAddr(el) {
-        const addr = $(el).data('addr');
-        snack('주소가 복사되었습니다.');
-    }
-
-    function openBomb() {
-        $('.bomb').addClass('open');
-        $(document).mouseup(function(e){    //bomb 여백 클릭 시 close
-            if($(e.target).parents('.bomb_inner').length < 1) {
-                $('.bomb.open').removeClass('open');
-            }
-        });
-    }
-    
-    $(document).ready(function() {
-        setTimeout(function(){
-            $('img[src*="//t1.daumcdn.net/localimg/localimages/07/2018/pc/map/marker_map02.png"]').attr('src','./images/ico_marker_90.png');
-            $('.popFullMap').css({'display':'none','opacity':'1','visibility':'visible'})
-        }, 100);
-    })
+            
+            sueSwiper();
+        })
     </script>
 </head>
 <body>
@@ -95,7 +120,7 @@
         <div class="tree">
             <img src="./images/tree_1.jpg" alt="Christmas Tree" />
             <div class="ornament">
-                <button type="button" class="ornament_btn ornament_btn_1" onclick="openPopup('popSample')"><img src="./images/ornament/ornament_1.png" /></button>
+                <button type="button" class="ornament_btn ornament_btn_1" onclick="openPopup('popInfo')"><img src="./images/ornament/ornament_1.png" /></button>
                 <button type="button" class="ornament_btn ornament_btn_2" onclick="openDialog('dialogSample')"><img src="./images/ornament/ornament_2.png" /></button>
                 <button type="button" class="ornament_btn ornament_btn_3" onclick="openPopup('popFullMap')"><img src="./images/ornament/ornament_4.png" /></button>
                 <button type="button" class="ornament_btn ornament_btn_4" onclick="openBomb()"></button>
@@ -124,19 +149,56 @@
                     <a href="tel:010-7118-7703" class="dialogSample_sns_item dialogSample_sns_item-tel">전화걸기</a>
                     <a href="https://blog.naver.com/suesuelog" target="_blank" class="dialogSample_sns_item dialogSample_sns_item-blog">블로그</a>
                     <a href="https://www.instagram.com/insuetagram?igsh=MXBva2JjeGJhdTA3NA==" target="_blank" class="dialogSample_sns_item dialogSample_sns_item-instagram">인스타그램</a>
-                    <!-- <button type="button" class="dialogSample_sns_item dialogSample_sns_item-copy" data-addr="경기도 군포시 광정로 25-20 퇴계주공 3단지아파트 352동 502호" onclick="copyAddr(this)">주소 복사</button> -->
                 </div>
             </div>
         </div>
     </div>
 
-    <!-- popup::알림 받기 -->
-    <div id="popSample" class="popup popSample">
+    <!-- popup::행사 안내 -->
+    <div id="popInfo" class="popup popInfo">
+        <div class="popup_inner">
+            <button type="button" class="popup_close"><span class="blind">팝업 닫기</span></button>
+            <div class="popup_body">
+                <p class="popup_subtitle">행사 안내</p>
+                <p class="popup_desc fs12"></p>
+                <dl class="event">
+                    <div class="event_info event_info-date">
+                        <dt>날짜</dt>
+                        <dd>2025.12.25(목) 16:00~</dd>
+                    </div>
+                    <div class="event_info event_info-place">
+                        <dt>장소</dt>
+                        <dd>쑤's 보금자리</dd>
+                        <dd><em>* 오시는 길 팝업 참조</em></dde>
+                    </div>
+                    <div class="event_info event_info-code">
+                        <dt>드레스코드</dt>
+                        <dd style="color:#E61518">RED</dd>
+                    </div>
+                </dl>
+            </div>
+            <div class="popup_footer">
+                <!-- <button type="button" class="popup_footer_btn popup_close">취소</button> -->
+                <button type="button" class="popup_footer_btn popup_close">확인</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- popup::메뉴 -->
+    <div id="popMenu" class="popup popMenu">
         <div class="popup_inner">
             <button type="button" class="popup_close"><span class="blind">팝업 닫기</span></button>
             <div class="popup_body">
                 <p class="popup_subtitle">메뉴</p>
                 <p class="popup_desc fs12"></p>
+                <div class="menu sueSwiper" data-params='{ "slidesPerView":"auto", "spaceBetween":24, "pagination":{"el":".menu .pagination"}, "observer":"true", "observeParents":"true" }'>
+                    <div class="swiper-wrapper">
+                        <div class="swiper-slide">1</div>
+                        <div class="swiper-slide">2</div>
+                        <div class="swiper-slide">3</div>
+                    </div>
+                    <span class="pagination"></span>
+                </div>
             </div>
             <!-- <div class="popup_footer">
                 <button type="button" class="popup_footer_btn popup_close">취소</button>
@@ -144,9 +206,8 @@
             </div> -->
         </div>
     </div>
-    <!-- //popup::알림 받기 -->
 
-    <!-- popup::알림 수신 동의 약관 -->
+    <!-- popup::오시는 길 -->
     <div id="popFullMap" class="popFull popFullMap" style="display:block;opacity:0;visibility:hidden">
         <div class="popFull_inner">
             <div class="popFull_header">
