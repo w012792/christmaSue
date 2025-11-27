@@ -71,7 +71,7 @@ figure, figcaption {position:relative;margin:0;padding:0}
 .popup_title {display:flex;align-items:center;height:100%;padding:0 60px 0 20px;font-weight:700;font-size:16px;letter-spacing:-0.8px;box-sizing:border-box}
 .popup_title .brand {display:flex;align-items:center;column-gap:8px}
 .popup_body {overflow-y:auto;max-height:70dvh;margin-top:14px;padding:0 20px 20px 20px;border-radius:0 0 4px 4px;line-height:1.4;overscroll-behavior:contain;box-sizing:border-box}
-.popup_subtitle {font-weight:600;font-size:14px;word-break:keep-all}
+.popup_subtitle {font-weight:600;font-size:16px;word-break:keep-all}
 .popup_subtitle:has( + *) {margin-bottom:12px}
 .popup_text {display:flex;font-weight:700;font-size:15px;word-break:keep-all}
 .popup_footer {display:flex;align-items:center;justify-content:center;border-top:1px solid var(--color-gray3)}
