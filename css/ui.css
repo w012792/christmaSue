@@ -48,10 +48,11 @@ figure, figcaption {position:relative;margin:0;padding:0}
 .dialogSample .dialog_title {padding-left:25px;padding-right:25px}
 .dialogSample .dialog_body {padding:0 25px 40px 25px}
 .dialogSample_sns {display:flex;align-items:center;justify-content:space-around;padding:20px 0 0 0;border-top:1px solid var(--color-gray3);box-sizing:border-box}
-.dialogSample_sns_item {flex:1;white-space:nowrap}
+.dialogSample_sns_item {flex:1;white-space:nowrap;text-align:center}
 .dialogSample_sns_item::before {content:"";display:block;overflow:hidden;width:54px;margin:0 auto 7px auto;padding-top:54px;border-radius:50%;background:no-repeat center/100% auto}
-.dialogSample_sns_item-kakao::before {background-image:url(../images/ico_share-kakao.jpg)}
-.dialogSample_sns_item-facebook::before {background-image:url(../images/ico_share-facebook.jpg)}
+.dialogSample_sns_item-tel::before {background-image:url(../images/ico_share-tel.png)}
+.dialogSample_sns_item-blog::before {background-image:url(../images/ico_share-blog.png)}
+.dialogSample_sns_item-instagram::before {background-image:url(../images/ico_share_instagram.png)}
 .dialogSample_sns_item-copy::before {background-image:url(../images/ico_share-copy.jpg)}
 /*
  ** popup
