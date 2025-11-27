@@ -4,16 +4,25 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="user-scalable=no, initial-scale=1.0, maximum-scale=1.0, width=device-width, viewport-fit=cover">
     <meta name="theme-color" content="#f0ebe2">
-    <meta name="title" content="쑤's Christmas Party">
+    <meta name="title" content="맨파워 어린이들 보시오">
     <meta name="description" content="크리스마스 파티에 초대합니다:)">
     <meta property="og:type" content="website">
-    <meta property="og:title" content="쑤's Christmas Party">
+    <meta property="og:title" content="맨파워 어린이들 보시오">
     <meta property="og:description" content="크리스마스 파티에 초대합니다:)">
     <meta property="og:url" content="https://w012792.github.io/sue-christmas/">
     <meta property="og:image" content="./images/img_thumb.jpg">
     <link rel="preconnect" href="https://fonts.googleapis.com"><!-- click font -->
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><!-- click font -->
     <link href="https://fonts.googleapis.com/css2?family=Playwrite+NO:wght@100..400&family=Satisfy&display=swap" rel="stylesheet"><!-- click font -->
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Frank+Ruhl+Libre:wght@300..900&display=swap" rel="stylesheet">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=News+Cycle:wght@400;700&display=swap" rel="stylesheet">
+
     <link rel="stylesheet" href="./css/swiper-bundle.min.css" /><!-- 12.0.3 -->
     <link rel="stylesheet" href="./css/fonts.css" />
     <link rel="stylesheet" href="./css/ui.css" />
@@ -64,6 +73,13 @@
                 $el.hide();
                 return false;
             });
+            if(el === 'popMenu') {
+                $(document).mouseup(function(e){    //MENU 여백 클릭 시 close
+                    if($(e.target).parents('.popup_inner').length < 1) {
+                        $('.popMenu').hide();
+                    }
+                });
+            }
         }
         function closePopup(el) {
             $(el).parents('.popup, .popFull').hide();
@@ -152,7 +168,7 @@
                 <div class="dialogSample_sns">
                     <a href="tel:010-7118-7703" class="dialogSample_sns_item dialogSample_sns_item-tel">전화걸기</a>
                     <a href="https://blog.naver.com/suesuelog" target="_blank" class="dialogSample_sns_item dialogSample_sns_item-blog">블로그</a>
-                    <a href="https://www.instagram.com/insuetagram?igsh=MXBva2JjeGJhdTA3NA==" target="_blank" class="dialogSample_sns_item dialogSample_sns_item-instagram">인스타그램</a>
+                    <a href="https://www.instagram.com/insuetagram?igsh=ZmR0bWJsZ3g4bHli" target="_blank" class="dialogSample_sns_item dialogSample_sns_item-instagram">인스타그램</a>
                 </div>
             </div>
         </div>
@@ -168,16 +184,16 @@
                 <dl class="event">
                     <div class="event_info event_info-date">
                         <dt>날짜</dt>
-                        <dd>2025.12.25(목) 16:00~</dd>
+                        <dd>2025.12.20(토) 16:00~</dd>
                     </div>
                     <div class="event_info event_info-place">
                         <dt>장소</dt>
-                        <dd>쑤's 보금자리</dd>
+                        <dd>우<b>家</b>우<b>家</b></dd>
                         <dd><em>* 오시는 길 팝업 참조</em></dde>
                     </div>
                     <div class="event_info event_info-code">
                         <dt>드레스코드</dt>
-                        <dd style="color:#E61518">RED</dd>
+                        <dd><b style="font-weight:500;color:#E61518">빨강</b>/<b style="font-weight:500;color:#416933">초록</b>이 들어간 상의나 아이템</dd>
                     </div>
                 </dl>
             </div>
@@ -190,24 +206,30 @@
 
     <!-- popup::메뉴 -->
     <div id="popMenu" class="popup popMenu">
-        <div class="popup_inner">
-            <button type="button" class="popup_close"><span class="blind">팝업 닫기</span></button>
-            <div class="popup_body">
-                <p class="popup_subtitle">메뉴</p>
-                <p class="popup_desc fs12">슬라이드 넣을까 생각 중</p>
-                <div class="menu sueSwiper" data-params='{ "slidesPerView":"auto", "spaceBetween":24, "pagination":{"el":".menu .pagination"}, "observer":"true", "observeParents":"true" }'>
-                    <div class="swiper-wrapper">
-                        <div class="swiper-slide menu_img">1</div>
-                        <div class="swiper-slide menu_img">2</div>
-                        <div class="swiper-slide menu_img">3</div>
-                    </div>
-                    <span class="pagination"></span>
-                </div>
+        <div class="popup_inner"><!-- popup_close -->
+            <strong class="menu_title frank-ruhl-libre">MENU</strong>
+            <div class="menu_group">
+                <em class="menu_category">Main</em>
+                <ul class="menu_list">
+                    <li class="menu_item">Pizza</li>
+                    <li class="menu_item">Pasta</li>
+                    <li class="menu_item">Steak</li>
+                    <li class="menu_item">Chicken</li>
+                    <li class="menu_item">Smoked Salmon</li>
+                </ul>
+
+                <em class="menu_category">Dessert</em>
+                <ul class="menu_list">
+                    <li class="menu_item">TBD</li>
+                </ul>
+
+                <em class="menu_category">Drink</em>
+                <ul class="menu_list">
+                    <li class="menu_item">Wine</li>
+                    <li class="menu_item">Beer</li> 
+                    <li class="menu_item">Soju</li>
+                </ul>
             </div>
-            <!-- <div class="popup_footer">
-                <button type="button" class="popup_footer_btn popup_close">취소</button>
-                <button type="button" class="popup_footer_btn">확인</button>
-            </div> -->
         </div>
     </div>
 
@@ -237,7 +259,7 @@
                         <dd class="line-height:1.5">경기도 군포시 광정로 25-20 퇴계주공 3단지아파트 <br />352동 502호</dd>
                         <dt>대중교통 이용안내</dt>
                         <dd><em>지하철 이용 시</em></dd>
-                        <dd><span class="line4">4</span>산본역 4번출구 </dd>
+                        <dd><span class="line4">4</span>산본역 4번 출구 방향 엘리베이터 이용 <!-- <p style="font-size:12px">*4번 출구 방향의 아트박스를 지나면 오른쪽에 엘리베이터가 있어요. 엘리베이터를 타고 내려와서 쭉- 직진하면 건너편에 나무계단이 보일 거예요. 그 계단을 타고 올라오면 바로 352동이 있습니다.</p> --></dd>
                         <dd style="margin-top:10px"><em>버스 이용 시</em></dd>
                         <dd>[산본역 하차(3번 출구)]</dd>
                         <dd class="bus">
@@ -262,5 +284,13 @@
             </div> -->
         </div>
     </div>
+    <!-- <div class="menu sueSwiper" data-params='{ "slidesPerView":"auto", "spaceBetween":24, "pagination":{"el":".menu .pagination"}, "observer":"true", "observeParents":"true" }'>
+        <div class="swiper-wrapper">
+            <div class="swiper-slide menu_img">1</div>
+            <div class="swiper-slide menu_img">2</div>
+            <div class="swiper-slide menu_img">3</div>
+        </div>
+        <span class="pagination"></span>
+    </div> -->
 </body>
 </html>
