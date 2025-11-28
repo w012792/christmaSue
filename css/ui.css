@@ -109,11 +109,12 @@ figure, figcaption {position:relative;margin:0;padding:0}
     0%,100%{opacity:0;top:10px}
     5%,92%{opacity:1;top:30px;z-index:11}
 }
-
-.wrap {display:flex;/* align-items:center; */justify-content:center;position:relative;height:100dvh;padding-top:10%;background-color:#f0ebe2;box-sizing:border-box}
+body {background-color:#f0ebe2}
+.wrap {display:flex;/* align-items:center; */justify-content:center;position:relative;max-width:736px;height:100dvh;margin:0 auto;padding-top:10%;box-sizing:border-box}
 .wrap > img {width:100%}
 
-.write {position:absolute;top:5.3%;left:0;right:0;margin:0 auto;transform:rotate(-8deg) scale(0.8) translateX(6vw);z-index:1}
+.write {position:absolute;top:2%;left:0;right:0;width:76%;margin:0 auto;padding-top:10%;transform:rotate(-8deg);z-index:1}
+.write img {width:100%}
 
 /* 트리 오너먼트 */
 .tree {position:relative}
