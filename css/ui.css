@@ -114,7 +114,7 @@ body {background-color:#f0ebe2}
 .wrap > img {width:100%}
 
 .write {position:absolute;top:2%;left:0;right:0;width:76%;margin:0 auto;padding-top:10%;transform:rotate(-8deg);z-index:1}
-.write img {width:100%}
+.write :where(img,video) {width:100%}
 
 /* 트리 오너먼트 */
 .tree {position:relative}
