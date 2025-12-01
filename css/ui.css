@@ -24,6 +24,7 @@ figure, figcaption {position:relative;margin:0;padding:0}
 .underline {text-decoration:underline;text-underline-position:under}
 .playwrite {font-family:"Playwrite NO",cursive;font-optical-sizing:auto;font-weight:500;font-style:normal}
 .frank-ruhl-libre {font-family: "Frank Ruhl Libre", serif;font-optical-sizing: auto;font-weight: 300;font-style: normal}
+body::after {content:url(../images/ico_arr_down_36.png),url(../images/ico_share-tel.png),url(../images/ico_share-blog.png),url(../images/ico_share_instagram.png),url(../images/ico_share-copy.jpg),url(../images/ico_cross_32.png),url(../images/ico_prev_96.png),url(../images/ico_cross_32.png),url(../images/ico_cross_32.png),url(../images/ico_event_date.png),url(../images/ico_event_place.png),url(../images/ico_event_code.png),url(../images/menu_bg.jpg);display:block;position:absolute;overflow:hidden;clip:rect(0 0 0 0);width:1px;height:1px}
 
 /*
  ** swiper
