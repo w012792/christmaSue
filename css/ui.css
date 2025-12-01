@@ -120,7 +120,7 @@ body {background-color:#f0ebe2}
 .ornament_btn_99 {top:111vw;width:12.1vw;height:12.1vw;margin-left:-27vw;animation:none}
 @keyframes onm1 {
     0%,100% {transform:scale(1)}
-    50% {transform:scale(1.3)}
+    50% {transform:scale(1.2)}
 }
 @keyframes onm2 {
     0%,100% {transform:scale(1)}
